@@ -1,9 +1,13 @@
 import os
 import logging
 import json
+from random import sample
 import numpy
 import joblib
 
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
 
 def init():
     """
@@ -21,16 +25,15 @@ def init():
     model = joblib.load(model_path)
     logging.info("Init complete")
 
-
-def run(raw_data):
+@input_schema("data", NumpyParameterType(numpy.asarray([[1,2,3,4,5,6,7,8,9,10], [10,9,8,7,6,5,4,3,2,1]])))
+@output_schema(StandardPythonParameterType([1.1,1.2]))
+def run(data):
     """
     This function is called for every invocation of the endpoint to perform the actual scoring/prediction.
     In the example we extract the data from the json input and call the scikit-learn model's predict()
     method and return the result back
     """
     logging.info("model 1: request received")
-    data = json.loads(raw_data)["data"]
-    data = numpy.array(data)
     result = model.predict(data)
     logging.info("Request processed")
     return result.tolist()

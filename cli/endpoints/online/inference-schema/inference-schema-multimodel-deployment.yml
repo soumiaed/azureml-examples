@@ -1,0 +1,13 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: inference-schema-multimod
+endpoint_name: inference-schema-multimod-e
+model:
+  path: ../multimodel/models
+code_configuration:
+  code: "." 
+  scoring_script: score-infschema-multimodel.py 
+environment:
+  image: mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest
+  conda_file: ../model-1/environment/conda.yml 
+instance_type: Standard_DS2_v2
+instance_count: 1 
