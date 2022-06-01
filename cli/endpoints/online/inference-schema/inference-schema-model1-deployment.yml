@@ -2,10 +2,11 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: inference-schema-model1
 endpoint_name: inference-schema-model1-e
 model:
+  
   path: ../model-1/model
 code_configuration:
-  code: "." 
-  scoring_script: score-model1-inference-schema.py 
+  code: ../model-1/onlinescoring
+  scoring_script: score.py 
 environment:
   image: mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest
   conda_file: ../model-1/environment/conda.yml 

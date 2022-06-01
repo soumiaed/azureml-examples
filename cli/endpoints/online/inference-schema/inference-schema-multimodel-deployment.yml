@@ -2,12 +2,14 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: inference-schema-multimod
 endpoint_name: inference-schema-multimod-e
 model:
-  path: ../multimodel/models
+  path: models.tar.gz
+  properties: {"azureml.unpack":True}
 code_configuration:
-  code: "." 
-  scoring_script: score-infschema-multimodel.py 
+  code: ./multimodel/code
+  scoring_script: score.py 
 environment:
   image: mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest
+  #image: ubuntu:focal
   conda_file: ../model-1/environment/conda.yml 
 instance_type: Standard_DS2_v2
 instance_count: 1 

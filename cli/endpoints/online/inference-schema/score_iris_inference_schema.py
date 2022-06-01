@@ -1,10 +1,9 @@
+#%%
 import os
 import logging
-import json
-from random import sample
 import numpy
 import joblib
-from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.schema_decorators import input_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
 def init():
@@ -19,10 +18,11 @@ def init():
     model = joblib.load(model_path)
     logging.info("Init complete")
 
-@input_schema("iris", NumpyParameterType(numpy.asarray([[6.0, 2.2, 5.0, 1.5], [5.2, 2.7, 3.9, 1.4]])))
-#@output_schema(StandardPythonParameterType([1.1,1.2]))
-def run(iris):
+@input_schema(param_name="data", param_type=NumpyParameterType(numpy.asarray([[6.0, 2.2, 5.0, 1.5], [5.2, 2.7, 3.9, 1.4]])))
+def run(data):
     logging.info("Iris: request received")
-    result = model.predict(iris)
+    result = model.predict(data)
     logging.info("Request processed")
     return result.tolist()
+
+# %%

@@ -1,14 +1,10 @@
 import os
 import logging
-import json
-from random import sample
 import numpy
 import joblib
-
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
-from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
-
+from pathlib import Path 
 def init():
     """
     This function is called when the container is initialized/started, typically after create/update of the deployment.
@@ -25,8 +21,7 @@ def init():
     model = joblib.load(model_path)
     logging.info("Init complete")
 
-@input_schema("data", NumpyParameterType(numpy.asarray([[1,2,3,4,5,6,7,8,9,10], [10,9,8,7,6,5,4,3,2,1]])))
-@output_schema(StandardPythonParameterType([1.1,1.2]))
+@input_schema(param_name="data", param_type=NumpyParameterType(numpy.asarray([[1,2,3,4,5,6,7,8,9,10], [10,9,8,7,6,5,4,3,2,1]])))
 def run(data):
     """
     This function is called for every invocation of the endpoint to perform the actual scoring/prediction.
