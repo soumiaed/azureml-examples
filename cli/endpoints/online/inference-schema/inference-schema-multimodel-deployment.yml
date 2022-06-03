@@ -2,7 +2,7 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: inference-schema-multimod
 endpoint_name: inference-schema-multimod-e
 model:
-  path: models.tar.gz
+  path: ./multimodel/models.tar.gz
   properties: {"azureml.unpack":True}
 code_configuration:
   code: ./multimodel/code

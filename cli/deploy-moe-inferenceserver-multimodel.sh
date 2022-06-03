@@ -39,13 +39,13 @@ cat $BASE_PATH/multimodel/iris-sample-input.json endpoints/online/model-1/sample
 # </combine_sample_input>
 
 # <create_endpoint>
-az ml online-endpoint create -n $ENDPOINT_NAME -f $BASE_PATH/inference-schema-multimodel-endpoint.yml --local
+az ml online-endpoint create -n $ENDPOINT_NAME -f $BASE_PATH/inference-schema-multimodel-endpoint.yml ##--local
 # </create_endpoint>
 
 # <create_deployment>
-az ml online-deployment create -e $ENDPOINT_NAME -f $BASE_PATH/inference-schema-multimodel-deployment.yml --local
+az ml online-deployment create -e $ENDPOINT_NAME -f $BASE_PATH/inference-schema-multimodel-deployment.yml ##--local
 # </create_deployment>
 
-az ml online-deployment get-logs -e $ENDPOINT_NAME -n inference-schema-multimod --local
+az ml online-deployment get-logs -e $ENDPOINT_NAME -n inference-schema-multimod ##--local
 
-az ml online-deployment get-logs -e endpt-18724 -n inference-schema-multimod --local
+az ml online-deployment get-logs -e endpt-18724 -n inference-schema-multimod ##--local

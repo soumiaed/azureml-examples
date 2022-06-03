@@ -4,7 +4,8 @@ import numpy
 import joblib
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
-from pathlib import Path 
+from pathlib import Path
+
 def init():
     """
     This function is called when the container is initialized/started, typically after create/update of the deployment.
