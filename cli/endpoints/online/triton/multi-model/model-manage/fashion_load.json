@@ -1,0 +1,5 @@
+{
+  "config": "{\"name\":\"fashion\",\"versions\":[1],\"platform\":\"tensorflow_savedmodel\",\"inputs\":[{\"name\":\"Conv1_input\",\"datatype\":\"FP32\",\"shape\":[-1,28,28,1]}],\"outputs\":[{\"name\":\"Dense\",\"datatype\":\"FP32\",\"shape\":[-1,10]}]  }",
+  "file": "1/saved_model.pb"
+}
+
