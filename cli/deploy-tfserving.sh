@@ -1,5 +1,5 @@
 # <initialize_variables>
-BASE_PATH=endpoints/online/custom-container
+BASE_PATH=endpoints/online/custom-container/tfserving
 AML_MODEL_NAME=tfserving-mounted
 MODEL_NAME=half_plus_two
 MODEL_BASE_PATH=/var/azureml-app/azureml-models/$AML_MODEL_NAME/1

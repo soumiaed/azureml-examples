@@ -1,4 +1,4 @@
-BASE_PATH=endpoints/online/custom-container
+BASE_PATH=endpoints/online/custom-container/torchserve
 AML_MODEL_NAME=torchserve-densenet161
 AZUREML_MODEL_DIR=azureml-models/$AML_MODEL_NAME/1
 MODEL_BASE_PATH=/var/azureml-app/$AZUREML_MODEL_DIR

@@ -11,7 +11,7 @@ export ENDPOINT_NAME=endpt-moe-`echo $RANDOM`
 export ACR_NAME=$(az ml workspace show --query container_registry -o tsv | cut -d'/' -f9-)
 
 # <set_base_path_and_copy_model>
-export PARENT_PATH="endpoints/online/custom-container"
+export PARENT_PATH="endpoints/online/custom-container/minimal"
 export BASE_PATH="$PARENT_PATH/minimal_context"
 rm -rf $BASE_PATH && mkdir -p $BASE_PATH
 cp -r endpoints/online/model-1 $BASE_PATH
